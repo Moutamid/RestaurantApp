@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.helper;
+package com.moutamid.easyroomapp.helper;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -8,18 +8,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.moutamid.restaurantapp.Model.ResturantModel;
-import com.moutamid.restaurantapp.Model.UserModel;
-import com.moutamid.restaurantapp.R;
+import com.moutamid.easyroomapp.Model.ResturantModel;
+import com.moutamid.easyroomapp.Model.UserModel;
+import com.moutamid.easyroomapp.R;
 
 public class BookingDialog extends Dialog {
-    private ResturantModel restaurant;
+    private ResturantModel easyroom;
     private UserModel user;
     private BookingListener listener;
 
-    public BookingDialog(Context context, ResturantModel restaurant, UserModel user, BookingListener listener) {
+    public BookingDialog(Context context, ResturantModel easyroom, UserModel user, BookingListener listener) {
         super(context);
-        this.restaurant = restaurant;
+        this.easyroom = easyroom;
         this.user = user;
         this.listener = listener;
     }
@@ -40,10 +40,10 @@ public class BookingDialog extends Dialog {
                 BookingModel booking = new BookingModel(
                         user.getName(),
                         user.getPhone_number(),
-                        restaurant.getName(),
-                        restaurant.getAddress(),
-                        restaurant.getImage_url(),
-                        restaurant.getKey(),
+                        easyroom.getName(),
+                        easyroom.getAddress(),
+                        easyroom.getImage_url(),
+                        easyroom.getKey(),
                         selectedTable
                 );
                 listener.onBookingConfirmed(booking);

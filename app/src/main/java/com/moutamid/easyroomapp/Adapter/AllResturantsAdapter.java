@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Adapter;
+package com.moutamid.easyroomapp.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
-import com.moutamid.restaurantapp.Activity.RestaurantsDetailsActivity;
-import com.moutamid.restaurantapp.Model.ResturantModel;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Activity.easyroomsDetailsActivity;
+import com.moutamid.easyroomapp.Model.ResturantModel;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class AllResturantsAdapter extends RecyclerView.Adapter<AllResturantsAdap
         holder.resturant_discription.setText(resturantModel.getShort_description());
         Glide.with(ctx).load(resturantModel.getImage_url()).into(holder.image);
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(ctx, RestaurantsDetailsActivity.class);
+            Intent intent = new Intent(ctx, easyroomsDetailsActivity.class);
             Stash.put(Config.currentModel, resturantModel);
             ctx.startActivity(intent);
         });

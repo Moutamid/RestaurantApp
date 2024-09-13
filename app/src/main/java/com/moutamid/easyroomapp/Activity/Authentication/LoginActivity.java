@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity.Authentication;
+package com.moutamid.easyroomapp.Activity.Authentication;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -20,10 +20,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.moutamid.restaurantapp.Activity.MainActivity;
-import com.moutamid.restaurantapp.Model.UserModel;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Activity.MainActivity;
+import com.moutamid.easyroomapp.Model.UserModel;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 import java.util.Objects;
 

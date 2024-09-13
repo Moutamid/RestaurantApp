@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity;
+package com.moutamid.easyroomapp.Activity;
 
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.moutamid.restaurantapp.Activity.Authentication.LoginActivity;
-import com.moutamid.restaurantapp.R;
+import com.moutamid.easyroomapp.Activity.Authentication.LoginActivity;
+import com.moutamid.easyroomapp.R;
 
 
 public class SplashActivity extends AppCompatActivity {

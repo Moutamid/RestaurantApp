@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.helper;
+package com.moutamid.easyroomapp.helper;
 
 import android.app.Application;
 

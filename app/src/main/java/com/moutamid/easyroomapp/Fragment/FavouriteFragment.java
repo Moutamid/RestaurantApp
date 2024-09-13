@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Fragment;
+package com.moutamid.easyroomapp.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fxn.stash.Stash;
-import com.moutamid.restaurantapp.Adapter.AllResturantsAdapter;
-import com.moutamid.restaurantapp.Model.ResturantModel;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Adapter.AllResturantsAdapter;
+import com.moutamid.easyroomapp.Model.ResturantModel;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 import java.util.ArrayList;
 import java.util.List;

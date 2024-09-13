@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Fragment;
+package com.moutamid.easyroomapp.Fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,13 +27,13 @@ import com.fxn.stash.Stash;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.moutamid.restaurantapp.Activity.MainActivity;
-import com.moutamid.restaurantapp.Activity.MapActivity;
-import com.moutamid.restaurantapp.Adapter.AllResturantsAdapter;
-import com.moutamid.restaurantapp.Model.LocationModel;
-import com.moutamid.restaurantapp.Model.ResturantModel;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Activity.MainActivity;
+import com.moutamid.easyroomapp.Activity.MapActivity;
+import com.moutamid.easyroomapp.Adapter.AllResturantsAdapter;
+import com.moutamid.easyroomapp.Model.LocationModel;
+import com.moutamid.easyroomapp.Model.ResturantModel;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,7 +128,7 @@ public class ResturantFragment extends Fragment {
 
     private void getProducts() {
         Config.showProgressDialog(getContext());
-        Config.databaseReference().child(Config.restaurants).addValueEventListener(new ValueEventListener() {
+        Config.databaseReference().child(Config.easyrooms).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productModelList.clear();

@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class com.moutamid.restaurantapp.helper.MyApplication { *; }
+-keep class com.moutamid.easyroomapp.helper.MyApplication { *; }

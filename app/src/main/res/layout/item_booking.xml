@@ -12,16 +12,16 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/restaurant_name"
+        android:id="@+id/easyroom_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurant Name" />
+        android:text="easyroom Name" />
 
     <TextView
-        android:id="@+id/restaurant_address"
+        android:id="@+id/easyroom_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurant Address" />
+        android:text="easyroom Address" />
 
     <TextView
         android:id="@+id/table_number"
@@ -30,7 +30,7 @@
         android:text="Table Number" />
 
     <ImageView
-        android:id="@+id/restaurant_image"
+        android:id="@+id/easyroom_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

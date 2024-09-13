@@ -7,17 +7,16 @@ plugins {
 }
 
 android {
-    namespace = "com.moutamid.restaurantapp"
+    namespace = "com.moutamid.easyroomapp"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.moutamid.restaurantapp"
+        applicationId = "com.moutamid.easyroomapp"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-        setProperty("archivesBaseName", "RestaurantApp-$versionName")
-
+        setProperty("archivesBaseName", "EasyRoomApp-$versionName")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
      buildTypes {
@@ -62,10 +61,5 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth:21.0.1")
-
-    //Room Database
-
-
-
 
 }

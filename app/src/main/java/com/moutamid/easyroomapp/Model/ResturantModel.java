@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Model;
+package com.moutamid.easyroomapp.Model;
 
 public class ResturantModel {
     String image_url, name, short_description, phone, address, key;

@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity;
+package com.moutamid.easyroomapp.Activity;
 
 import android.os.Bundle;
 
@@ -11,8 +11,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.moutamid.restaurantapp.Model.LocationModel;
-import com.moutamid.restaurantapp.R;
+import com.moutamid.easyroomapp.Model.LocationModel;
+import com.moutamid.easyroomapp.R;
 
 import java.util.ArrayList;
 

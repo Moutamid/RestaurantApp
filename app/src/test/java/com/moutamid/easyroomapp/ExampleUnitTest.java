@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp;
+package com.moutamid.easyroomapp;
 
 import org.junit.Test;
 

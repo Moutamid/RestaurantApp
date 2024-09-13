@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity.Authentication;
+package com.moutamid.easyroomapp.Activity.Authentication;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.moutamid.restaurantapp.R;
+import com.moutamid.easyroomapp.R;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 

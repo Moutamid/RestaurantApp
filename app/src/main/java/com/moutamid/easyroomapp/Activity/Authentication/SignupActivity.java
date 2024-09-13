@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity.Authentication;
+package com.moutamid.easyroomapp.Activity.Authentication;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -23,10 +23,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.moutamid.restaurantapp.Activity.MainActivity;
-import com.moutamid.restaurantapp.Model.UserModel;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Activity.MainActivity;
+import com.moutamid.easyroomapp.Model.UserModel;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

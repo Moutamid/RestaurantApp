@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Model;
+package com.moutamid.easyroomapp.Model;
 
 
 

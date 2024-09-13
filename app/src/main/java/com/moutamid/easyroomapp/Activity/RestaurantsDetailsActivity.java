@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity;
+package com.moutamid.easyroomapp.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,15 +19,15 @@ import com.fxn.stash.Stash;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moutamid.restaurantapp.Model.ResturantModel;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Model.ResturantModel;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RestaurantsDetailsActivity extends AppCompatActivity {
+public class easyroomsDetailsActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     //TODO name change of variable
@@ -41,7 +41,7 @@ public class RestaurantsDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurants_details);
+        setContentView(R.layout.activity_easyrooms_details);
          databaseReference = Config.databaseReference().child("Bookings");
         resImage_img = findViewById(R.id.image);
         unfavourite_img = findViewById(R.id.unfavourite);
@@ -57,7 +57,7 @@ public class RestaurantsDetailsActivity extends AppCompatActivity {
         name.setText(current_resturantModel.getName());
         title.setText(current_resturantModel.getName());
         address_res.setText(current_resturantModel.getAddress());
-        Glide.with(RestaurantsDetailsActivity.this).load(current_resturantModel.getImage_url()).into(resImage_img);
+        Glide.with(easyroomsDetailsActivity.this).load(current_resturantModel.getImage_url()).into(resImage_img);
         phone_res.setText(current_resturantModel.getPhone());
         description.setText(current_resturantModel.getShort_description());
         ArrayList<ResturantModel> resturantModels = Stash.getArrayList(Config.favourite, ResturantModel.class);
@@ -77,7 +77,7 @@ public class RestaurantsDetailsActivity extends AppCompatActivity {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(RestaurantsDetailsActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(easyroomsDetailsActivity.this);
                 LayoutInflater inflater = getLayoutInflater();
                 View dialogView = inflater.inflate(R.layout.dialog_booking, null);
 
@@ -93,22 +93,22 @@ public class RestaurantsDetailsActivity extends AppCompatActivity {
                         // Get selected table
                         String selectedTable = tableSpinner.getSelectedItem().toString();
                         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        String restaurantId = ""; // Replace with actual restaurant ID or key
+                        String easyroomId = ""; // Replace with actual easyroom ID or key
                         Map<String, Object> bookingData = new HashMap<>();
                         bookingData.put("userId", userId);
-                        bookingData.put("restaurantId", restaurantId);
+                        bookingData.put("easyroomId", easyroomId);
                         bookingData.put("table", selectedTable);
 
                         // Save data to Firebase
                         databaseReference.push().setValue(bookingData).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                Toast.makeText(RestaurantsDetailsActivity.this, "Booking confirmed for table: " + selectedTable, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(easyroomsDetailsActivity.this, "Booking confirmed for table: " + selectedTable, Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             } else {
-                                Toast.makeText(RestaurantsDetailsActivity.this, "Failed to confirm booking. Please try again.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(easyroomsDetailsActivity.this, "Failed to confirm booking. Please try again.", Toast.LENGTH_SHORT).show();
                             }
                         });     // Show confirmation message
-                        Toast.makeText(RestaurantsDetailsActivity.this, "Booking confirmed for table: " + selectedTable, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(easyroomsDetailsActivity.this, "Booking confirmed for table: " + selectedTable, Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     }
                 });
@@ -122,14 +122,14 @@ public class RestaurantsDetailsActivity extends AppCompatActivity {
                 Log.d("latlng", current_resturantModel.getLat() + "   " + current_resturantModel.getLng());
 
                 if (current_resturantModel.getLat() > -90 && current_resturantModel.getLat() < 90 && current_resturantModel.getLng() > -180 && current_resturantModel.getLng() < 180) {
-                    Intent intent = new Intent(RestaurantsDetailsActivity.this, MapActivity.class);
+                    Intent intent = new Intent(easyroomsDetailsActivity.this, MapActivity.class);
                     intent.putExtra("lat", current_resturantModel.getLat());
                     intent.putExtra("lng", current_resturantModel.getLng());
                     intent.putExtra("name", current_resturantModel.getName());
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(RestaurantsDetailsActivity.this, "Invalid Coordinates to show marker", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(easyroomsDetailsActivity.this, "Invalid Coordinates to show marker", Toast.LENGTH_SHORT).show();
                 }
 
             }

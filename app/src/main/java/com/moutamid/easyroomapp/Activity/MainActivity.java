@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Activity;
+package com.moutamid.easyroomapp.Activity;
 
 
 import android.os.Bundle;
@@ -11,11 +11,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.moutamid.restaurantapp.Fragment.FavouriteFragment;
-import com.moutamid.restaurantapp.Fragment.ResturantFragment;
-import com.moutamid.restaurantapp.Fragment.TypesFragment;
-import com.moutamid.restaurantapp.R;
-import com.moutamid.restaurantapp.helper.Config;
+import com.moutamid.easyroomapp.Fragment.FavouriteFragment;
+import com.moutamid.easyroomapp.Fragment.ResturantFragment;
+import com.moutamid.easyroomapp.Fragment.TypesFragment;
+import com.moutamid.easyroomapp.R;
+import com.moutamid.easyroomapp.helper.Config;
 
 public class MainActivity extends AppCompatActivity {
 

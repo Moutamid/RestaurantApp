@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.helper;
+package com.moutamid.easyroomapp.helper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.moutamid.restaurantapp.R;
+import com.moutamid.easyroomapp.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,9 +31,9 @@ import java.net.URL;
 import java.util.Objects;
 
 public class Config {
-    public static String preference_name = "RestaurantsApp";
+    public static String preference_name = "easyroomsApp";
     public static String favourite = "Favourite";
-    public static String restaurants = "Restaurants";
+    public static String easyrooms = "easyrooms";
     public static String currentModel = "CurrentModel";
     static SharedPreferences sharedpreferences;
     static SharedPreferences.Editor editor;
@@ -42,7 +42,7 @@ public class Config {
 
 
     public static DatabaseReference databaseReference() {
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("RestaurantsApp");
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("easyroomsApp");
         db.keepSynced(true);
         return db;
     }
@@ -87,7 +87,7 @@ public class Config {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
     public static void checkApp(Activity activity) {
-        String appName = "RestaurantsApp";
+        String appName = "easyroomsApp";
 
         new Thread(() -> {
             URL google = null;
@@ -147,7 +147,7 @@ public class Config {
     public static void alertDialogue(final Activity context, String message, boolean finish) {
 
         new AlertDialog.Builder(context)
-                .setTitle("Restaurant App")
+                .setTitle("easyroom App")
                 .setMessage(message)
                 .setCancelable(false)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {

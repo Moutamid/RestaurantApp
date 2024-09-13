@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:fontFamily="@font/lexend_extra_bold"
-            android:text="Restaurants"
+            android:text="easyrooms"
             android:textColor="@color/black"
             android:textSize="35dp" />
     </androidx.appcompat.widget.Toolbar>
@@ -55,7 +55,7 @@
             android:layout_marginBottom="23dp"
             android:background="@drawable/edit_bg"
             android:fontFamily="@font/calibri"
-            android:hint="  Search for Halal Restaurants"
+            android:hint="  Search for Halal easyrooms"
             android:padding="15dp"
             android:textSize="14dp" />
 
@@ -103,7 +103,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:paddingLeft="6dp"
-                android:text="No Restaurant Found"
+                android:text="No easyroom Found"
                 android:textColor="#9C9191"
                 android:textSize="18dp"
                 android:textStyle="bold"

@@ -1,4 +1,4 @@
-package com.moutamid.restaurantapp.Fragment;
+package com.moutamid.easyroomapp.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import com.moutamid.restaurantapp.R;
+import com.moutamid.easyroomapp.R;
 
 
 public class TypesFragment extends Fragment {

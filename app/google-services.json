@@ -358,7 +358,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:97166215280:android:7c8147522b40af61338cb5",
         "android_client_info": {
-          "package_name": "com.moutamid.restaurantadmin"
+          "package_name": "com.moutamid.easyroomadmin"
         }
       },
       "oauth_client": [
@@ -394,7 +394,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:97166215280:android:10520b063d8a5824338cb5",
         "android_client_info": {
-          "package_name": "com.moutamid.restaurantapp"
+          "package_name": "com.moutamid.easyroomapp"
         }
       },
       "oauth_client": [
