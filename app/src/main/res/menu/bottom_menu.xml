@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/home"
-        android:title="easyrooms"
-        android:icon="@drawable/fork"/>
+        android:title="Rooms"
+        android:icon="@drawable/bed"/>
 
  <item
         android:id="@+id/favourite"
@@ -14,8 +14,8 @@
 
     <item
         android:id="@+id/types"
-        android:title="Requests"
-        android:icon="@drawable/halal"/>
+        android:title="Profile"
+        android:icon="@drawable/user"/>
 
 
 

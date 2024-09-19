@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -27,32 +29,36 @@ import com.moutamid.easyroomapp.Activity.MainActivity;
 import com.moutamid.easyroomapp.Model.UserModel;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
+import com.moutamid.easyroomapp.helper.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 
-public class
-SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_GALLERY = 111;
     ImageView profile_pic;
     Calendar myCalendar = Calendar.getInstance();
     EditText name, dob, email, password, phone_number;
     Uri image_profile_str = null;
+    RadioGroup userTypeRadioGroup;
+    RadioButton selectedUserType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
         profile_pic = findViewById(R.id.profile_pic);
         initComponent();
+
+        // Date picker for Date of Birth (DOB)
         DatePickerDialog.OnDateSetListener date = (view, year, monthOfYear, dayOfMonth) -> {
-            // TODO Auto-generated method stub
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String myFormat = "MM/dd/yyyy"; //In which you need put here
+            String myFormat = "MM/dd/yyyy"; // The format you need
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
             dob.setText(sdf.format(myCalendar.getTime()));
         };
@@ -71,6 +77,7 @@ SignupActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         phone_number = findViewById(R.id.phone_number);
+        userTypeRadioGroup = findViewById(R.id.user_type); // Initialize the RadioGroup for user type
     }
 
     public void login(View view) {
@@ -78,11 +85,18 @@ SignupActivity extends AppCompatActivity {
     }
 
     public void sign_up(View view) {
+        int selectedRadioButtonId = userTypeRadioGroup.getCheckedRadioButtonId();
+        if (selectedRadioButtonId == -1) {
+            Toast.makeText(SignupActivity.this, "Please select a user type", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Get selected user type
+        selectedUserType = findViewById(selectedRadioButtonId);
         if (validation()) {
             registerRequest();
         }
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -94,14 +108,13 @@ SignupActivity extends AppCompatActivity {
         }
     }
 
-
     private void registerRequest() {
-
         Dialog lodingbar = new Dialog(SignupActivity.this);
         lodingbar.setContentView(R.layout.loading);
         Objects.requireNonNull(lodingbar.getWindow()).setBackgroundDrawable(new ColorDrawable(UCharacter.JoiningType.TRANSPARENT));
         lodingbar.setCancelable(false);
         lodingbar.show();
+
         String filePathName = "users/";
         final String timestamp = "" + System.currentTimeMillis();
         StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathName + timestamp);
@@ -115,7 +128,7 @@ SignupActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 Uri downloadImageUri = task.getResult();
                 if (downloadImageUri != null) {
-                    Config.auth().createUserWithEmailAndPassword(
+                    Constants.auth().createUserWithEmailAndPassword(
                             email.getText().toString(),
                             password.getText().toString()
                     ).addOnCompleteListener(authResult -> {
@@ -125,9 +138,10 @@ SignupActivity extends AppCompatActivity {
                         userModel.email = email.getText().toString();
                         userModel.phone_number = phone_number.getText().toString();
                         userModel.image_url = downloadImageUri.toString();
+                        userModel.user_type = selectedUserType.getText().toString(); // Add user type to model
                         userModel.id = authResult.getResult().getUser().getUid();
 
-                        Config.UserReference.child(Objects.requireNonNull(Config.auth().getCurrentUser().getUid())).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        Constants.UserReference.child(Objects.requireNonNull(Constants.auth().getCurrentUser().getUid())).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Stash.put("UserDetails", userModel);
@@ -139,13 +153,11 @@ SignupActivity extends AppCompatActivity {
                         });
                     }).addOnFailureListener(e -> {
                         lodingbar.dismiss();
-                        Toast.makeText(this, "error" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
                 }
             }
-
         });
-
     }
 
     private boolean validation() {
@@ -157,8 +169,8 @@ SignupActivity extends AppCompatActivity {
             name.setError("Enter Name");
             name.requestFocus();
             Config.openKeyboard(this);
-
             return false;
+
         } else if (dob.getText().toString().isEmpty()) {
             dob.setError("Select Date of Birth");
             dob.requestFocus();
@@ -175,26 +187,20 @@ SignupActivity extends AppCompatActivity {
             password.setError("Enter Password");
             password.requestFocus();
             Config.openKeyboard(this);
-
             return false;
 
         } else if (phone_number.getText().toString().isEmpty()) {
             phone_number.setError("Enter Phone Number");
             phone_number.requestFocus();
             Config.openKeyboard(this);
-
             return false;
 
         } else if (!Config.isNetworkAvailable(this)) {
-            Config.showToast(this, "You are not connected to network");
-
+            Config.showToast(this, "You are not connected to the network");
             return false;
-        } else {
-
-            return true;
-
         }
 
+        return true;
     }
 
     public void profile_image(View view) {

@@ -3,12 +3,19 @@ package com.moutamid.easyroomapp.Model;
 
 
 public class UserModel {
-    public String name, dob, email, phone_number, id;
+    public String name, dob, email, phone_number, id, user_type;
     public String image_url;
     public String key;
      public UserModel() {
     }
 
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
 
     public String getName() {
         return name;

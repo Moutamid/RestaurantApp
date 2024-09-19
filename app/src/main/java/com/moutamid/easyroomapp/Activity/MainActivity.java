@@ -12,8 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.moutamid.easyroomapp.Fragment.FavouriteFragment;
-import com.moutamid.easyroomapp.Fragment.ResturantFragment;
-import com.moutamid.easyroomapp.Fragment.TypesFragment;
+import com.moutamid.easyroomapp.Fragment.VillaFragment;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
 
@@ -27,15 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         binding = findViewById(R.id.bottomNavigationView);
         Config.checkApp(MainActivity.this);
-        replaceFragment(new ResturantFragment());
+        replaceFragment(new VillaFragment());
         binding.setBackground(null);
         binding.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.types) {
-                    replaceFragment(new TypesFragment());
-                } else if (item.getItemId() == R.id.home) {
-                    replaceFragment(new ResturantFragment());
+               if (item.getItemId() == R.id.home) {
+                    replaceFragment(new VillaFragment());
                 }else if (item.getItemId() == R.id.favourite) {
                     replaceFragment(new FavouriteFragment());
                 }

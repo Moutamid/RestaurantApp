@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
-import com.moutamid.easyroomapp.Activity.easyroomsDetailsActivity;
+import com.moutamid.easyroomapp.Activity.EasyRoomDetailsActivity;
 import com.moutamid.easyroomapp.Model.ResturantModel;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
@@ -51,7 +51,7 @@ public class AllResturantsAdapter extends RecyclerView.Adapter<AllResturantsAdap
         holder.resturant_discription.setText(resturantModel.getShort_description());
         Glide.with(ctx).load(resturantModel.getImage_url()).into(holder.image);
         holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(ctx, easyroomsDetailsActivity.class);
+            Intent intent = new Intent(ctx, EasyRoomDetailsActivity.class);
             Stash.put(Config.currentModel, resturantModel);
             ctx.startActivity(intent);
         });
