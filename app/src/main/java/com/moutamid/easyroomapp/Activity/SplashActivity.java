@@ -10,8 +10,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.fxn.stash.Stash;
 import com.google.firebase.auth.FirebaseAuth;
 import com.moutamid.easyroomapp.Activity.Authentication.LoginActivity;
+import com.moutamid.easyroomapp.Model.UserModel;
 import com.moutamid.easyroomapp.R;
 
 
@@ -40,10 +42,25 @@ public class SplashActivity extends AppCompatActivity {
 
     public void goToApp() {
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            UserModel userNew = (UserModel) Stash.getObject("UserDetails", UserModel.class);
+            if (userNew!= null) {
+                if (userNew.user_type.equals("Landlord")) {
+                    Intent mainIntent = new Intent(SplashActivity.this, com.moutamid.easyroomapp.landlord.MainActivity.class);
+                    mainIntent.putExtra("type", "null");
+                    startActivity(mainIntent);
+                    finish();
+                }else {
+                    Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+                    mainIntent.putExtra("type", "null");
+                    startActivity(mainIntent);
+                    finish();
+                }
+            } else {
             Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
             mainIntent.putExtra("type", "null");
             startActivity(mainIntent);
             finish();
+            }
         }
         else
         {

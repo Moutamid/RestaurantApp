@@ -11,6 +11,11 @@
         android:title="Favourite"
         android:icon="@drawable/baseline_favorite_24"/>
 
+<item
+        android:id="@+id/inbox"
+        android:title="Inbox"
+        android:icon="@drawable/mail"/>
+
 
     <item
         android:id="@+id/types"

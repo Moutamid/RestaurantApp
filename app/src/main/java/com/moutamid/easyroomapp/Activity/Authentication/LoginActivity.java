@@ -108,9 +108,17 @@ public class LoginActivity extends AppCompatActivity {
                         if (snapshot.exists()) {
                             UserModel userModel = snapshot.getValue(UserModel.class);
                             Stash.put("UserDetails", userModel);
+                            Stash.put("guest", false);
+
                             lodingbar.dismiss();
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            finishAffinity();
+
+                            if (userModel.user_type.equals("Landlord")) {
+                                startActivity(new Intent(LoginActivity.this, com.moutamid.easyroomapp.landlord.MainActivity.class));
+                                finishAffinity();
+                            } else {
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finishAffinity();
+                            }
                         }
                     }
 

@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fxn.stash.Stash;
 import com.moutamid.easyroomapp.Adapter.FavouriteVillaAdapter;
-import com.moutamid.easyroomapp.Model.VillaModel;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
+import com.moutamid.easyroomapp.landlord.model.Villa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class FavouriteFragment extends Fragment {
 
     RecyclerView content_rcv;
 
-    public List<VillaModel> productModelList = new ArrayList<>();
+    public List<Villa> productModelList = new ArrayList<>();
     FavouriteVillaAdapter retaurantAdapter;
     TextView no_text;
 
@@ -35,7 +35,7 @@ public class FavouriteFragment extends Fragment {
         content_rcv = view.findViewById(R.id.content_rcv);
         no_text = view.findViewById(R.id.no_text);
         content_rcv.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        ArrayList<VillaModel> VillaArrayList = Stash.getArrayList(Config.favourite, VillaModel.class);
+        ArrayList<Villa> VillaArrayList = Stash.getArrayList(Config.favourite, Villa.class);
         retaurantAdapter = new FavouriteVillaAdapter(getContext(), VillaArrayList);
         content_rcv.setAdapter(retaurantAdapter);
         retaurantAdapter.notifyDataSetChanged();
@@ -46,7 +46,7 @@ public class FavouriteFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        ArrayList<VillaModel> VillaArrayList = Stash.getArrayList(Config.favourite, VillaModel.class);
+        ArrayList<Villa> VillaArrayList = Stash.getArrayList(Config.favourite, Villa.class);
         retaurantAdapter = new FavouriteVillaAdapter(getContext(), VillaArrayList);
         content_rcv.setAdapter(retaurantAdapter);
         retaurantAdapter.notifyDataSetChanged();

@@ -146,9 +146,16 @@ public class SignupActivity extends AppCompatActivity {
                             public void onSuccess(Void unused) {
                                 Stash.put("UserDetails", userModel);
                                 Stash.put("is_first", true);
+                                Stash.put("guest", false);
+
                                 lodingbar.dismiss();
+                                if (userModel.user_type.equals("Landlord")) {
+                                    startActivity(new Intent(SignupActivity.this, com.moutamid.easyroomapp.landlord.MainActivity.class));
+                                    finishAffinity();
+                                } else {
                                 startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                 finishAffinity();
+                                }
                             }
                         });
                     }).addOnFailureListener(e -> {

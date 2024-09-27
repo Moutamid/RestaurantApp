@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.fxn.stash.Stash;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.moutamid.easyroomapp.Activity.EasyRoomDetailsActivity;
-import com.moutamid.easyroomapp.Model.VillaModel;
+import com.moutamid.easyroomapp.Activity.RoomDetailsActivity;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
+import com.moutamid.easyroomapp.landlord.model.Villa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +26,11 @@ public class FavouriteVillaAdapter extends RecyclerView.Adapter<FavouriteVillaAd
 
 
     Context ctx;
-    List<VillaModel> productModels;
+    List<Villa> productModels;
     private static final double EARTH_RADIUS = 6371;
 
 
-    public FavouriteVillaAdapter(Context ctx, List<VillaModel> productModels) {
+    public FavouriteVillaAdapter(Context ctx, List<Villa> productModels) {
         this.ctx = ctx;
         this.productModels = productModels;
     }
@@ -44,7 +43,7 @@ public class FavouriteVillaAdapter extends RecyclerView.Adapter<FavouriteVillaAd
         return new GalleryPhotosViewHolder(view);
     }
 
-    public void filterList(ArrayList<VillaModel> filterlist) {
+    public void filterList(ArrayList<Villa> filterlist) {
         productModels = filterlist;
         notifyDataSetChanged();
     }
@@ -52,7 +51,7 @@ public class FavouriteVillaAdapter extends RecyclerView.Adapter<FavouriteVillaAd
     @Override
     public void onBindViewHolder(@NonNull GalleryPhotosViewHolder holder, final int position) {
 
-        VillaModel villa = productModels.get(position);
+        Villa villa = productModels.get(position);
         double distance = calculateDistance(Config.lat, Config.lng, villa.getLat(), villa.getLng());
         holder.villa_name.setText(villa.getName());
         holder.bill.setText("$"+villa.getBill()+"/month");
@@ -64,12 +63,12 @@ public class FavouriteVillaAdapter extends RecyclerView.Adapter<FavouriteVillaAd
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (villa.available.equals("available")) {
+//                if (villa.available.equals("available")) {
                     Stash.put(Config.currentModel, villa);
-                    ctx.startActivity(new Intent(ctx, EasyRoomDetailsActivity.class));
-                } else {
-                    Toast.makeText(ctx, "VillaModel is not available yet", Toast.LENGTH_SHORT).show();
-                }
+                    ctx.startActivity(new Intent(ctx, RoomDetailsActivity.class));
+//                } else {
+//                    Toast.makeText(ctx, "VillaModel is not available yet", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }

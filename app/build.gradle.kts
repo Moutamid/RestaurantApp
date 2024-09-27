@@ -79,5 +79,8 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.makeramen:roundedimageview:2.3.0")
+    implementation("com.squareup.picasso:picasso:2.71828")
+    implementation("com.google.firebase:firebase-messaging:23.0.0")
 
+    implementation("com.firebaseui:firebase-ui-database:7.2.0")
 }

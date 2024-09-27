@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -23,7 +24,19 @@
         android:theme="@style/Theme.BottomNavigation"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.EasyRoomDetailsActivity"
+            android:name=".landlord.activities.LandlordResponseActivity"
+            android:exported="false" />
+       <activity
+            android:name=".Activity.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.RoomDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.EditProfileActivity"
             android:exported="false" />
 
         <meta-data
@@ -56,15 +69,22 @@
         </activity>
         <activity
             android:name=".Activity.MainActivity"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:exported="true"></activity>
+        <activity
+            android:name=".landlord.activities.Home.AddVillaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".landlord.activities.Home.EditVillaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".landlord.activities.Home.VillaDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".landlord.activities.Home.MapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".landlord.MainActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"

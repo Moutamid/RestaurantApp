@@ -24,4 +24,39 @@
         <item>Table 5</item>
         <!-- Add more tables as needed -->
     </string-array>
+    <string name="ali_raza">Guest</string>
+    <string name="personal_info">Personal Info</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="support_us">Support Us</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="other">Other</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="setting">Profile</string>
+    <string name="account">Account</string>
+    <string name="logout">Logout</string>
+    <string name="property_name">Property Name</string>
+    <string name="property_description">Property Description</string>
+    <string name="property_area">Area (m²)</string>
+    <string name="bedroom">Number of Rooms</string>
+    <string name="bathroom">Number of Bathrooms</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="location_title">Location Title</string>
+    <string name="pet_friendly">Pet Friendly</string>
+    <string name="smoker_friendly">Smoker Friendly</string>
+    <string name="air_conditioning">Air Conditioning</string>
+    <string name="dryer">Dryer</string>
+    <string name="full_bathroom">Full Bathrooms</string>
+    <string name="steam_shower">Steam Showers</string>
+    <string name="toilet">Toilets</string>
+    <string name="bill">Bill Amount</string>
+    <string name="bills_included">Bills Included</string>
+    <string name="room_type">Room Type</string>
+    <string name="user_image_url">User Image URL</string>
+    <string name="user_name">User Name</string>
+    <string name="bathroom_details">Bathroom Details\n</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="auto_complete_text">Autocomplete textview with custom adapter.</string>
+    <string name="error">Google Api key is missing.</string>
+
 </resources>

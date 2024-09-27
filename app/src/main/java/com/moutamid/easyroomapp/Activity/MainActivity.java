@@ -12,6 +12,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.moutamid.easyroomapp.Fragment.FavouriteFragment;
+import com.moutamid.easyroomapp.Fragment.InboxFragment;
+import com.moutamid.easyroomapp.Fragment.ProfileFragment;
 import com.moutamid.easyroomapp.Fragment.VillaFragment;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
@@ -35,7 +37,11 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new VillaFragment());
                 }else if (item.getItemId() == R.id.favourite) {
                     replaceFragment(new FavouriteFragment());
-                }
+                }else if (item.getItemId() == R.id.types) {
+                    replaceFragment(new ProfileFragment());
+                }else if (item.getItemId() == R.id.inbox) {
+                   replaceFragment(new InboxFragment());
+               }
                 return true;
             }
         });

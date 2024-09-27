@@ -35,10 +35,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.moutamid.easyroomapp.Adapter.AutoCompleteAdapter;
 import com.moutamid.easyroomapp.Adapter.OwnVillaAdapter;
-import com.moutamid.easyroomapp.Model.VillaModel;
 import com.moutamid.easyroomapp.R;
 import com.moutamid.easyroomapp.helper.Config;
 import com.moutamid.easyroomapp.helper.Constants;
+import com.moutamid.easyroomapp.landlord.model.HouseRules;
+import com.moutamid.easyroomapp.landlord.model.PropertyAmenities;
+import com.moutamid.easyroomapp.landlord.model.Villa;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -54,8 +56,8 @@ public class VillaFragment extends Fragment {
     private static final double EARTH_RADIUS = 6371;
 
     public static RecyclerView content_rcv1;
-    public static List<VillaModel> productModelList = new ArrayList<>();
-    public static List<VillaModel> filterModelList = new ArrayList<>();
+    public static List<Villa> productModelList = new ArrayList<>();
+    public static List<Villa> filterModelList = new ArrayList<>();
     public static TextView no_text, searched_date;
     public static OwnVillaAdapter ownVillaAdapter;
     public static LottieAnimationView loading;
@@ -214,8 +216,18 @@ public class VillaFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productModelList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    VillaModel villaModel = ds.getValue(VillaModel.class);
-
+                    Villa herbsModel = ds.getValue(Villa.class);
+//                    if (herbsModel.verified) {
+                    DataSnapshot propertyAmenities1 = ds.child("PropertyAmenities");
+                    DataSnapshot houseRules1 = ds.child("HouseRules");
+                    PropertyAmenities propertyAmenities = propertyAmenities1.getValue(PropertyAmenities.class);
+                    HouseRules houseRules = houseRules1.getValue(HouseRules.class);
+                    herbsModel.setPropertyAmenities(propertyAmenities);
+//                    herbsModel.setBathroom(bathroom1);
+                    herbsModel.setHouseRules(houseRules);
+//                    Log.d("dataaa", herbsModel + "  io ");
+//                    herbsModel.setPropertyDetails(propertyDetails);
+//                    herbsModel.setHouseRules(houseRules);
                     DataSnapshot imagesSnapshot = ds.child("images");
                     Map<String, String> imagesMap = new HashMap<>();
                     for (DataSnapshot imageSnapshot : imagesSnapshot.getChildren()) {
@@ -223,8 +235,9 @@ public class VillaFragment extends Fragment {
                         String imageUrl = imageSnapshot.getValue(String.class);
                         imagesMap.put(imageKey, imageUrl);
                     }
-                    villaModel.setImages(imagesMap);
-                    productModelList.add(villaModel);
+
+                    herbsModel.setImages(imagesMap);
+                    productModelList.add(herbsModel);
 
                 }
                 loading.setVisibility(View.GONE);
@@ -253,7 +266,7 @@ public class VillaFragment extends Fragment {
                 productModelList.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    VillaModel villaModel = ds.getValue(VillaModel.class);
+                    Villa villaModel = ds.getValue(Villa.class);
 
                     DataSnapshot imagesSnapshot = ds.child("images");
                     Map<String, String> imagesMap = new HashMap<>();
@@ -291,31 +304,12 @@ public class VillaFragment extends Fragment {
 
     }
 
-    public void filter(String text) {
-        ArrayList<VillaModel> filteredlist = new ArrayList<VillaModel>();
-        for (VillaModel item : productModelList) {
-            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
-                filteredlist.add(item);
-            }
-
-        }
-        if (filteredlist.isEmpty()) {
-            content_rcv1.setVisibility(View.GONE);
-            no_text.setVisibility(View.VISIBLE);
-        } else {
-
-            content_rcv1.setVisibility(View.VISIBLE);
-            no_text.setVisibility(View.GONE);
-            ownVillaAdapter.filterList(filteredlist);
-
-        }
-    }
 
     public void filter_both(String dates, String location) {
         Log.d("data", dates + "  " + location);
-        ArrayList<VillaModel> filteredlist = new ArrayList<VillaModel>();
+        ArrayList<Villa> filteredlist = new ArrayList<Villa>();
 
-        for (VillaModel item : productModelList) {
+        for (Villa item : productModelList) {
             if (matchQuery(location, item.getTitle()) && item.available_dates.contains(dates.toLowerCase())) {
                 filteredlist.add(item);
                 Log.d("data1", dates + "  " + location);
@@ -337,10 +331,10 @@ public class VillaFragment extends Fragment {
     public void filter_locations(String searchQuery) {
         autoCompleteTextView.setFocusable(true);
 
-        ArrayList<VillaModel> filteredlist = new ArrayList<VillaModel>();
+        ArrayList<Villa> filteredlist = new ArrayList<Villa>();
         String[] searchWords = searchQuery.toLowerCase().split("\\s+");
 
-        for (VillaModel item : productModelList) {
+        for (Villa item : productModelList) {
             if (matchQuery(searchQuery, item.getTitle())) {
                 Log.d("place", item + "");
                 filteredlist.add(item);
@@ -359,8 +353,8 @@ public class VillaFragment extends Fragment {
 
 
     public void filter_dates(String text) {
-        ArrayList<VillaModel> filteredlist = new ArrayList<VillaModel>();
-        for (VillaModel item : productModelList) {
+        ArrayList<Villa> filteredlist = new ArrayList<Villa>();
+        for (Villa item : productModelList) {
             if (item.available_dates.contains(text.toLowerCase())) {
                 filteredlist.add(item);
 

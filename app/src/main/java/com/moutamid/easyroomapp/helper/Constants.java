@@ -5,7 +5,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Constants {
-    public static String db_path = "RentApp";
+    public static String db_path = "EasyRoomsApp";
 
 
 
@@ -14,7 +14,7 @@ public class Constants {
     }
 
     public static DatabaseReference databaseReference() {
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("RentApp");
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("EasyRoomsApp");
         db.keepSynced(true);
         return db;
     }

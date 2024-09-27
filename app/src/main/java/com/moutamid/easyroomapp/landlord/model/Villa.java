@@ -1,12 +1,22 @@
-package com.moutamid.easyroomapp.Model;
+package com.moutamid.easyroomapp.landlord.model;
+
 
 import java.util.List;
 import java.util.Map;
 
-public class VillaModel {
-
-    private String name;
+public class Villa {
+    private HouseRules houseRules;
+    private Location location;
+    private PropertyAmenities propertyAmenities;
+    public String rules;
+    private PropertyDetails propertyDetails;
+    private int area;
+    private int bathRoom;
+    public String available;
+    private int bedroom;
     private String description;
+    public String phone;
+    private String name;
     private int roomType;
     private int bill;
     public int no_of_persons;
@@ -17,7 +27,6 @@ public class VillaModel {
     private double lng;
     private String title;
 
-    public String available;
     public String token;
     public String city_name;
     public String town_name;
@@ -27,13 +36,46 @@ public class VillaModel {
     public double distance;
     public boolean verified;
     public String ownerID;
-    public VillaModel() {
+
+    public Villa() {
     }
 
-    public VillaModel(double lat, double lng, String title) {
+    public Villa(double lat, double lng, String title) {
         this.lat = lat;
         this.lng = lng;
         this.title = title;
+    }
+
+    public HouseRules getHouseRules() {
+        return houseRules;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public PropertyAmenities getPropertyAmenities() {
+        return propertyAmenities;
+    }
+
+    public PropertyDetails getPropertyDetails() {
+        return propertyDetails;
+    }
+
+    public int getArea() {
+        return area;
+    }
+
+    public int getBathRoom() {
+        return bathRoom;
+    }
+
+    public int getBedroom() {
+        return bedroom;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getName() {
@@ -81,6 +123,22 @@ public class VillaModel {
         return title;
     }
 
+    public void setHouseRules(HouseRules houseRules) {
+        this.houseRules = houseRules;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setPropertyAmenities(PropertyAmenities propertyAmenities) {
+        this.propertyAmenities = propertyAmenities;
+    }
+
+    public void setPropertyDetails(PropertyDetails propertyDetails) {
+        this.propertyDetails = propertyDetails;
+    }
+
     public double getDistance() {
         return distance;
     }
@@ -92,6 +150,7 @@ public class VillaModel {
     public void setName(String name) {
         this.name = name;
     }
+
     private Map<String, String> images;
 
     public Map<String, String> getImages() {
@@ -102,9 +161,11 @@ public class VillaModel {
         this.images = images;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAvailable() {
+        return available;
     }
 
-
+    public void setAvailable(String available) {
+        this.available = available;
+    }
 }
